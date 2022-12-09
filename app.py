@@ -37,7 +37,7 @@ class App(ctk.CTk):
 
         ## Window
         self.title("Pokemon")
-        self.geometry("1000x700")
+        self.geometry("700x650")
 
         ## Grid layout
         self.grid_rowconfigure(0, weight = 1)
@@ -73,7 +73,6 @@ class App(ctk.CTk):
     def select_frame(self, name):
         ## Color for selected button
         self.pokedex_button.configure(fg_color = ("red", "red") if name == "pokedex" else "transparent")
-
         ## Show selected frame
         if name == "pokedex":
             self.pokedex_frame.grid(row = 0, column = 1, sticky = "nsew")
@@ -115,17 +114,20 @@ class App(ctk.CTk):
         # Show pokemon predicted
         self.pokemon_predicted_image = ctk.CTkLabel(self.pokedex_frame, text = "", image = pokemon_predicted_img, padx = 10, pady = 20)
         self.pokemon_predicted_image.grid(row = 4, column = 0, padx = 5, pady = 10)
-
-
-        
-        
-
-        
-        
-
-        
-
-
+        ## App design
+        # Change color based on pokemon predicted
+        if pokemon_predicted == 'Bulbasaur':
+            app_color = 'green'
+        elif pokemon_predicted == 'Charmander':
+            app_color = 'red'
+        elif pokemon_predicted == 'Mew':
+            app_color = 'purple'
+        elif pokemon_predicted == 'Pikachu':
+            app_color = 'orange'
+        elif pokemon_predicted == 'Squirtle':
+            app_color = 'blue'
+        self.pokedex_button.configure(fg_color = (app_color, app_color))
+        self.pokedex_button_select_image.configure(fg_color = app_color)
 
 
 ##### MAIN
